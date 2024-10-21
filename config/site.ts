@@ -1,7 +1,7 @@
 const config = {
   appName: "HSL Selector",
-  appDescription: "",
-  domainName: "",
+  appDescription: "HSL",
+  domainName: "https://nexthsl.vercel.app/",
 } as ConfigProps;
 
 export const headerNav = [{ name: "Home", href: "/" }];
