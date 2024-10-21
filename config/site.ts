@@ -4,7 +4,7 @@ const config = {
   domainName: "",
 } as ConfigProps;
 
-export const headerNav = [];
+export const headerNav = [{ name: "Home", href: "/" }];
 
 export const logo = {
   headerLogo: {
