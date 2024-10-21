@@ -1,25 +1,21 @@
 const config = {
-  appName: "Launcher",
-  appDescription: "Build a beautiful landing page",
-  domainName: "basiclauncher.st",
+  appName: "HSL Selector",
+  appDescription: "",
+  domainName: "",
 } as ConfigProps;
 
-export const headerNav = [
-  { name: "Features", href: "#features" },
-  { name: "FAQ", href: "/#faq" },
-  { name: "Blog", href: "/blog" },
-];
+export const headerNav = [];
 
 export const logo = {
   headerLogo: {
-    appName: "BasicLauncher",
-    alt: "BasicLauncherLogo",
-    src: "/logo.svg",
+    appName: "HSL Selector",
+    alt: "HSL Selector",
+    src: "/200x50.svg",
   },
   footerLogo: {
-    appName: "BasicLauncher",
-    alt: "BasicLauncherLogo",
-    src: "/logo.svg",
+    appName: "HSL Selector",
+    alt: "HSL Selector",
+    src: "/200x50.svg",
   },
 };
 
