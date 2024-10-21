@@ -30,7 +30,7 @@ export default function RootLayout({
           <div className="flex-1">
             <main className="max-w-7xl mx-auto">{children}</main>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
       {!isDevelopment && <GoogleAnalytics gaId={gaId} />}
