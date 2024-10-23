@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
+import ColorVariations from "@/components/ColorVariations";
 
 function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   s /= 100;
@@ -26,7 +27,6 @@ export default function Component() {
   const [hue, setHue] = useState(180);
   const [saturation, setSaturation] = useState(50);
   const [lightness, setLightness] = useState(50);
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const updateHue = useCallback((value: number[]) => setHue(value[0]), []);
   const updateSaturation = useCallback(
@@ -41,28 +41,6 @@ export default function Component() {
   const hslColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   const [r, g, b] = hslToRgb(hue, saturation, lightness);
   const hexColor = rgbToHex(r, g, b);
-
-  const colorVariations = useMemo(() => {
-    const variations = [];
-    for (let s = 20; s <= 100; s += 20) {
-      for (let l = 20; l <= 80; l += 20) {
-        variations.push(`hsl(${hue}, ${s}%, ${l}%)`);
-      }
-    }
-    return variations;
-  }, [hue]);
-
-  const copyToClipboard = useCallback((color: string, index: number) => {
-    navigator.clipboard
-      .writeText(color)
-      .then(() => {
-        setCopiedIndex(index);
-        setTimeout(() => setCopiedIndex(null), 2000);
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
-  }, []);
 
   return (
     <div className="p-6 space-y-6">
@@ -110,26 +88,7 @@ export default function Component() {
           </div>
         </Card>
       </div>
-      <Card className="p-4">
-        <h2 className="text-lg font-semibold mb-4">Color Variations</h2>
-        <div className="grid grid-cols-5 gap-4">
-          {colorVariations.map((color, index) => (
-            <div
-              key={index}
-              className="relative h-12 rounded-md shadow-inner overflow-hidden cursor-pointer group"
-              style={{ backgroundColor: color }}
-              onClick={() => copyToClipboard(color, index)}
-              aria-label={`Copy color: ${color}`}
-            >
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="px-2 py-1 text-xs font-medium text-white bg-black bg-opacity-50 rounded backdrop-blur-sm">
-                  {copiedIndex === index ? "Copied" : "Copy"}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
+      <ColorVariations hue={hue} />
     </div>
   );
 }

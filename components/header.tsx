@@ -24,9 +24,9 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky inset-x-0 top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 ">
       <nav
-        className="flex items-center justify-between p-6 lg:px-5"
+        className="flex items-center justify-between p-3 lg:px-5 border border-b-black"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -59,9 +59,12 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-foreground hover:text-foreground/80"
+              className="text-sm font-medium leading-6 text-foreground hover:text-foreground/80"
             >
-              {item.name}
+              <div className="relative px-[4px] py-[2px] group">
+                <span className="relative z-10">{item.name}</span>
+                <span className="absolute inset-y-0 left-0 w-0 bg-green-400 group-hover:w-full transition-all duration-270 ease-out"></span>
+              </div>
             </Link>
           ))}
         </div>

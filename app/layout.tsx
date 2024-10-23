@@ -28,7 +28,7 @@ export default function RootLayout({
         >
           <Header />
           <div className="flex-1">
-            <main className="max-w-7xl mx-auto">{children}</main>
+            <main className="">{children}</main>
           </div>
           {/* <Footer /> */}
         </ThemeProvider>

@@ -4,7 +4,10 @@ const config = {
   domainName: "https://nexthsl.vercel.app/",
 } as ConfigProps;
 
-export const headerNav = [{ name: "Home", href: "/" }];
+export const headerNav = [
+  { name: "Home", href: "/" },
+  { name: "Block", href: "/block" },
+];
 
 export const logo = {
   headerLogo: {
